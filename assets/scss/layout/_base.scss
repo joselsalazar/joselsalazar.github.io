@@ -1,0 +1,37 @@
+body {
+  background:#000;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  color:$white;
+  height:100%;
+  text-align:center;
+  font-size:18px;
+  margin: 0;
+}
+
+h1, h2, h3 {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	text-transform: uppercase;
+   margin:5px 0;
+}
+
+h1 {
+	font-size: 2.6em;
+}
+
+h2 {
+	font-size: 1.6em;
+}
+
+p {
+  font-size: 1.6em;
+}
+
+.wrapper {
+  @include clear;
+  width:100%;
+}
+
+.bigger {
+  font-size: 5em !important;
+}

@@ -1,0 +1,48 @@
+.hangman-container {
+  margin: 0 auto;
+  background: rgba(0,0,0,0.7);
+
+  p {
+  	line-height: 1.2;
+  	padding: 20px;
+  }
+
+  @include tablet {
+  	width: 75%;
+  }
+
+  @include desktop {
+  	width: 50%;
+  }
+}
+
+header {
+	padding: 5%;
+	@include tablet {
+		padding: 15px;
+	}
+}
+
+#my-word {
+  display: block;
+  padding: 0;
+  display:block;
+  margin: 25px 0;
+
+  li {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    display: inline-block;
+    padding: 0 10px;
+    font-size:1.6em;
+  }
+}
+
+.hold {
+	margin: 40px 0;
+}
+
+.container {
+	padding: 5%;
+}

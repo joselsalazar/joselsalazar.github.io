@@ -1,0 +1,307 @@
+/*=====================================
+  GLOBAL IMPORTS
+=====================================*/
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*=========================
+	Media Queries
+=========================*/
+/* Use tablet and desktop */
+/* Variabes */
+body {
+  background: #000;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #fff;
+  height: 100%;
+  text-align: center;
+  font-size: 18px;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+
+h1 {
+  font-size: 2.6em;
+}
+
+h2 {
+  font-size: 1.6em;
+}
+
+p {
+  font-size: 1.6em;
+}
+
+.wrapper {
+  width: 100%;
+}
+.wrapper:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.bigger {
+  font-size: 5em !important;
+}
+
+.hangman-container {
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.7);
+}
+.hangman-container p {
+  line-height: 1.2;
+  padding: 20px;
+}
+@media (min-width: 768px) {
+  .hangman-container {
+    width: 75%;
+  }
+}
+@media (min-width: 1200px) {
+  .hangman-container {
+    width: 50%;
+  }
+}
+
+header {
+  padding: 5%;
+}
+@media (min-width: 768px) {
+  header {
+    padding: 15px;
+  }
+}
+
+#my-word {
+  display: block;
+  padding: 0;
+  display: block;
+  margin: 25px 0;
+}
+#my-word li {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+  padding: 0 10px;
+  font-size: 1.6em;
+}
+
+.hold {
+  margin: 40px 0;
+}
+
+.container {
+  padding: 5%;
+}
+
+.indy-bg {
+  background: url("../img/indiana-jones.jpg") center #000;
+}
+
+.harry-bg {
+  background: url("../img/harry-potter.jpg") center #000;
+}
+
+.nintendo-bg {
+  background: url("../img/nintendo.jpg") center #000;
+}
+
+#alphabet {
+  margin: 15px auto;
+  padding: 15px;
+  max-width: 900px;
+}
+#alphabet:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.mario-style li,
+.indiana-style li,
+.harry-style li {
+  display: inline-block;
+  text-align: center;
+  margin: 0 10px 10px 0;
+  list-style: none;
+  width: 35px;
+  height: 30px;
+  padding-top: 10px;
+  background: #fff;
+  cursor: pointer;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -khtml-border-radius: 5px;
+  border: solid 1px #fff;
+}
+
+.mario-style li:nth-child(2n) {
+  background: #ED1A24;
+  color: #fff;
+}
+.mario-style li:nth-child(2n-1) {
+  background: #0CB14B;
+  color: #fff;
+}
+.mario-style li:hover {
+  background: #fff;
+  color: #000;
+}
+
+.indiana-style li:nth-child(n) {
+  background: url("../img/indy-papyrus.jpg");
+  color: #fff;
+  text-shadow: 1px 1px 3px #000;
+}
+.indiana-style li:hover {
+  background: #fff;
+  color: #000;
+}
+
+.harry-style li:nth-child(n) {
+  background: url("../img/stars.jpg");
+  color: #fff;
+}
+.harry-style li:hover {
+  background: #fff;
+  color: #000;
+}
+
+.active {
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -moz-transition: all 1s ease-in;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  cursor: default;
+}
+.active:hover {
+  -moz-transition: all 1s ease-in;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+  -moz-transition: all 1s ease-in;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.hide-me {
+  display: none;
+}
+
+.guess {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.hangman-container p:first-child {
+  padding-top: 15px;
+}
+
+#mylives {
+  font-size: 2.6em;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.footer-style {
+  background: #000;
+  padding: 30px 0;
+}
+
+button.indiana-style {
+  background: url("../img/indiana-jones-gradient.png");
+}
+
+button.harry-style {
+  background: #070F12;
+}
+
+button {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -khtml-border-radius: 5px;
+  background: #0065B3;
+  color: #fff;
+  border: solid 1px #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 18px 10px;
+  width: 180px;
+  margin: 10px;
+  outline: none;
+}
+button:hover {
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background: #fff;
+  color: #000;
+}
+
+/*# sourceMappingURL=style.css.map */
