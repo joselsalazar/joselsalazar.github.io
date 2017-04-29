@@ -1,8 +1,10 @@
 // Variables
 
-  var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+  var alphabet = [
+  		'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-        't', 'u', 'v', 'w', 'x', 'y', 'z'];
+        't', 'u', 'v', 'w', 'x', 'y', 'z'
+  	];
   
   var categories;         // Array of topics
   var chosenCategory;     // Selected category
@@ -12,7 +14,6 @@
   var guesses = [ ];      // Stored guesses
   var lives ;             // Lives
   var counter ;           // Count correct guesses
-  var space;              // Number of spaces in word '-'
 
   // Element Storage
   var showLives = document.querySelector("#mylives");
@@ -32,12 +33,41 @@
     for (var i = 0; i < alphabet.length; i++) {
       letters.id = 'alphabet';
       list = document.createElement('li');
-      list.id = 'letter';
+      list.id = alphabet[i];
       list.innerHTML = alphabet[i];
-      check();
+      list.onclick = check;
       myButtons.appendChild(letters);
       letters.appendChild(list);
     }
+  }
+
+    // OnClick Function
+    function check() {
+      var guess = (this.innerHTML);
+      this.onclick = null;
+
+      checkForWin(guess);
+    }
+
+  function checkForWin(guess)
+  {
+      document.getElementById(guess).setAttribute("class", "active");
+
+      for (var i = 0; i < word.length; i++) {
+        if (word[i] === guess) {
+          guesses[i].innerHTML = guess;
+          counter += 1;
+          coinAudio.play();
+        } 
+      }
+      var j = (word.indexOf(guess));
+      if (j === -1) {
+        lives -= 1;
+        comments();
+        errorAudio.play();
+      } else {
+        comments();
+      }
   }
   
   // Function Adds Class That Triggers Event in CSS
@@ -67,7 +97,7 @@
 
   // Store Guesses
    function result() {
-    wordHolder = document.getElementById('hold');
+    wordHolder = document.querySelector('#hold');
     correct = document.createElement('ul');
 
     for (var i = 0; i < word.length; i++) {
@@ -76,7 +106,6 @@
       guess.setAttribute('class', 'guess');
       if (word[i] === "-") {
         guess.innerHTML = "-";
-        space = 1;
       } else {
         guess.innerHTML = "_";
       }
@@ -96,46 +125,20 @@
       addClass('#mylives', 'bigger');
       audio.play();
     }
+
     for (var i = 0; i < guesses.length; i++) {
-      if (counter + space === guesses.length) {
+      if (counter === guesses.length) {
         showLives.innerHTML = "You Win!";
         winnerAudio.play();
       }
     }
   }
 
-  // OnClick Function
-   function check() {
-    list.onclick = function () {
-      var guess = (this.innerHTML);
-      this.setAttribute("class", "active");
-      this.onclick = null;
-
-      for (var i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          guesses[i].innerHTML = guess;
-          counter += 1;
-          coinAudio.play();
-        } 
-      }
-      var j = (word.indexOf(guess));
-      if (j === -1) {
-        lives -= 1;
-        comments();
-        errorAudio.play();
-      } else {
-        comments();
-      }
-    }
-  }
-  
-    
   // Play
-  function playGame() {
     categories = [
         ["hermione", "snape", "voldemort", "hedwig", "hagrid"],
-        ["indiana-jones", "marion", "short-round", "spielberg", "fedora"],
-        ["mario", "princess-peach", "luigi", "wario", "donkey-kong"]
+        ["indiana", "marion", "round", "spielberg", "fedora"],
+        ["mario", "peach", "luigi", "wario", "kong"]
     ];
 
     chosenCategory = categories[Math.floor(Math.random() * categories.length)];
@@ -146,24 +149,21 @@
     guesses = [ ];
     lives = 5;
     counter = 0;
-    space = 0;
     result();
     comments();
     selectCat();
-  }
 
-  playGame();
-  
+
   // Hints / Clues
     hints = [
         ["Ron's future wife", "Professor who loves Harry's mom", "He who shall not be named", "Harry's Owl", "Sometimes known as Hagger"],
-        ["The main character!", "Indiana's love interest", "Indiana's forgettable sidekick", "Director of the films", "Indiana's Hat"],
-        ["Main character of the Nintendo universe", "The Princess in Pink", "Mario's little brother", "Mario's fat arch nemesis", "The Ape that likes bananas and stars in his own games"]
+        ["The main character!", "Indiana's love interest", "Indiana's forgettable sidekick, short...", "Director of the films", "Indiana's Hat"],
+        ["Main character of the Nintendo universe", "The Princess in Pink", "Mario's little brother", "Mario's fat arch nemesis", "The Ape that likes bananas and stars in his own games! Donkey..."]
     ];
 
     var categoryIndex = categories.indexOf(chosenCategory);
     var hintIndex = chosenCategory.indexOf(word);
-    showClue.innerHTML = "Clue: " +  hints [categoryIndex][hintIndex];
+    showClue.innerHTML = "Hint: " +  hints [categoryIndex][hintIndex];
   
    // Reset
 
@@ -174,5 +174,12 @@
     playGame();
   }
 
+  document.onkeyup = function() {
+    var code = event.keyCode;
 
-
+    // check for alpha chars
+    if (code <= 90 && code >= 65)
+    {
+      checkForWin(String.fromCharCode(code).toLowerCase());
+    }
+  }
